@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Học 600 Từ Vựng TOEIC - ZIM</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <div class="container header-content">
+            <a href="#" class="logo" onclick="app.renderHome(); return false;">
+                📚 TOEIC Mastery
+            </a>
+            <nav class="nav-menu">
+                <a href="#" class="nav-link active" id="nav-home" onclick="app.renderHome(); return false;">Chủ Đề</a>
+                <a href="#" class="nav-link" id="nav-game" onclick="app.startGame(); return false;">Luyện Tập</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- Home View: Topic List -->
+        <section id="home-view">
+            <div class="search-container">
+                <input type="text" id="search-input" class="search-input" placeholder="Tìm kiếm từ vựng..."
+                    onkeyup="app.handleSearch(this.value)">
+            </div>
+
+            <div id="topic-grid" class="topic-grid">
+                <!-- Topics will be loaded here -->
+            </div>
+
+            <div id="search-results" class="word-grid" style="display: none; margin-top: 2rem;">
+                <!-- Search results will appear here -->
+            </div>
+        </section>
+
+        <!-- Topic View: Details -->
+        <section id="topic-view" style="display: none;">
+            <button class="back-button" onclick="app.renderHome()">
+                ← Quay lại danh sách
+            </button>
+            <div class="word-list-header">
+                <h2 id="current-topic-title" class="topic-group-title" style="border:none; text-align: center;">Topic
+                    Title</h2>
+            </div>
+            <div id="word-grid" class="word-grid">
+                <!-- Words will be loaded here -->
+            </div>
+        </section>
+
+        <!-- Game View -->
+        <section id="game-view" style="display: none;">
+            <div class="game-container">
+                <div class="game-score-board">
+                    <span>Điểm: <span id="score">0</span></span>
+                    <span>Câu: <span id="question-count">1</span>/10</span>
+                </div>
+                <div id="game-content">
+                    <div class="game-question" id="game-question">Word</div>
+                    <div class="game-options" id="game-options">
+                        <!-- Options -->
+                    </div>
+                </div>
+                <div id="game-feedback" style="margin-top: 1rem; font-weight: bold; min-height: 24px;"></div>
+                <button id="next-btn" class="btn" style="display: none;" onclick="app.nextQuestion()">Câu Tiếp
+                    Theo</button>
+                <div id="game-end" style="display: none;">
+                    <h2>Kết Thúc!</h2>
+                    <p>Bạn đạt được <span id="final-score">0</span>/10 điểm.</p>
+                    <button class="btn" onclick="app.startGame()">Chơi Lại</button>
+                    <button class="btn" onclick="app.renderHome()"
+                        style="background-color: var(--secondary-color); margin-left: 1rem;">Về Trang Chủ</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>© Phi Hưng ôn Toeic</p>
+    </footer>
+
+    <!-- Load Data First -->
+    <script src="data.js"></script>
+    <!-- Main Script -->
+    <script src="script.js"></script>
+</body>
+
+</html>
